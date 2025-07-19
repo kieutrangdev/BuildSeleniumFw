@@ -3,16 +3,28 @@ package Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class Driver {
+import java.util.Objects;
+
+public final class Driver {
     public static WebDriver driver;
-    public static void init()
-    {
-        driver = new ChromeDriver();
+
+    private Driver() {
+
     }
 
-    public static void quitDriver()
-    {
-        driver.quit();
 
+    public static void init() {
+        if (Objects.isNull(driver)) {
+            driver = new ChromeDriver();
+            System.out.println(DriveManager.getDriver());
+            DriveManager.setDriver(driver);
+        }
+    }
+
+    public static void quitDriver() {
+        if (Objects.nonNull(DriveManager.getDriver())) {
+            DriveManager.getDriver().quit();
+            DriveManager.unload();
+        }
     }
 }
