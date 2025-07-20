@@ -15,12 +15,12 @@ public final class Driver {
     }
 
 
-    public static void init() throws IOException {
+    public static void init() throws Exception {
         if (Objects.isNull(driver)) {
             driver = new ChromeDriver();
             System.out.println(DriveManager.getDriver());
             DriveManager.setDriver(driver);
-            DriveManager.getDriver().get(ReadPropertiesFile.getValue("URL"));
+            DriveManager.getDriver().get(ReadPropertiesFile.get("URL"));
         }
     }
 
