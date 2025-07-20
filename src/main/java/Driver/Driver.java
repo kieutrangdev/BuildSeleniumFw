@@ -2,7 +2,9 @@ package Driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import utils.ReadPropertiesFile;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public final class Driver {
@@ -13,11 +15,12 @@ public final class Driver {
     }
 
 
-    public static void init() {
+    public static void init() throws IOException {
         if (Objects.isNull(driver)) {
             driver = new ChromeDriver();
             System.out.println(DriveManager.getDriver());
             DriveManager.setDriver(driver);
+            DriveManager.getDriver().get(ReadPropertiesFile.getValue("URL"));
         }
     }
 

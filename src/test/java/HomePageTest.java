@@ -7,7 +7,7 @@ public class HomePageTest extends BaseTest{
     @Test
     public void test1()
     {
-        DriveManager.getDriver().get("https://www.amazon.in/");
+//        DriveManager.getDriver().get("");
         DriveManager.getDriver().findElement(By.xpath("//span[text()='Hello, sign in']")).click();
     }
 }
