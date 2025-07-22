@@ -1,5 +1,7 @@
 package utils;
 
+import Constants.FrameworkConstant;
+
 import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,11 +20,11 @@ public final class ReadPropertiesFile {
 
     static {
         try {
-            FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/main/resources/config/config.properties");
+            FileInputStream fis = new FileInputStream(FrameworkConstant.getConfigPath());
             properties.load(fis);
 
             for(Map.Entry<Object, Object> entry : properties.entrySet()) {
-                CONFIGMAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()) );
+                CONFIGMAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()).trim() );
             }
           //  properties.entrySet().forEach(entry -> CONFIGMAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue())));
         } catch (FileNotFoundException e) {
